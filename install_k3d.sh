@@ -1,3 +1,5 @@
+#!/bin/bash
+
 sudo apt-get update 
 
 for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do 
@@ -32,6 +34,6 @@ curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
 sudo usermod -aG root devops
 sudo usermod -aG docker devops
 
-sudo su - devops
-
+sudo -i -u devops bash << K3D
 k3d cluster create traive-interview --api-port 6443 --servers 1 --agents 1 --port "30500-31000:30500-31000@server:0"
+K3D

@@ -166,6 +166,7 @@ resource "azurerm_virtual_machine_extension" "script" {
   type_handler_version = "2.0"
   settings = <<SETTINGS
     {
+       "fileUris": ["https://raw.githubusercontent.com/raphaelbaldini/azure-k3d/main/install_k3d.sh"],
       "commandToExecute": "sh install_k3d.sh"
     }
 SETTINGS
